@@ -1,31 +1,13 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const AuthService = require('./Services/Auth')
-
-
+const express = require("express");
+const bodyParser = require("body-parser")
+const UserRoute = require("./routes/user.routes");
 const app = express();
-app.use(cors())
-app.use(express.json())
 
+app.use(bodyParser.json())
 
-mongoose.connect("mongodb://127.0.0.1:27017/InscriptionDb")
+app.use("/",UserRoute);
 
- 
-app.use('/etudiant', AuthService.authenticateEtudiant);
-app.use('/gestionnaire', AuthService.authenticateGestionnaire);
-
-
-
-
-
-
-
-
-app.listen(4000, () => {
-  console.log(`Le serveur est en cours d'exécution sur le port ${port}`);
-});
-
+module.exports = app;
 
 
 

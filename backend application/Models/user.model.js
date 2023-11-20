@@ -19,10 +19,6 @@ const userSchema = new Schema({
         type: String,
         required: [true, "password is required"],
     },
-    role:{
-        type: Boolean,
-        
-    }
 },{timestamps:true});
 
 
